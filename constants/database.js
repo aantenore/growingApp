@@ -18,4 +18,4 @@ const firebaseConfig = {
     appId: "1:976710702186:web:0fa81897805311e3e62613"
   };
 
-function app(){firebaseClass.appinit = firebase.initializeApp(fireBaseConfig); return firebaseClass.appinit}
+function app(){firebaseClass.appinit = firebase.initializeApp(firebaseConfig); return firebaseClass.appinit}

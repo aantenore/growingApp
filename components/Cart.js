@@ -4,8 +4,9 @@ import * as React from 'react';
 export default class Cart extends React.Component {
 
     render(){
+        console.log()
     return (
-        this.state?.productList?.length>0?<Button 
+        list.length>0?<Button 
         title={"Carrello"}
         onPress={()=>{
         this.handlePress()
