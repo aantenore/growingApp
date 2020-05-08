@@ -11,6 +11,7 @@ export default function Login({navigation}) {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Login Screen Works!</Text>
         <GoToButton screen='HomeCustomer' navigation={navigation} params={{user:'testshop',context:'customer',table:'1'}}/>
+        <GoToButton screen='testGetProducts' navigation={navigation} params={{user:'testshop',context:'customer',table:'1'}}/>
         <GoToButton screen='HomeVendor' navigation={navigation} params={{user:'testshop',context:'vendor',table:undefined}}/>
       </View>
     );
