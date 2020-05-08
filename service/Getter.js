@@ -53,12 +53,9 @@ class Getter{
 function get(category){
     global.counterLoop++;
     if(global.counterLoop>constants.counterLoop) return;
-    console.log('get'+ category);
     var ref = getDbRef('/'+global.user+constants.products+category);
     let products = [];
     let numOfSubCategories = Getter.getDepthSubCategories(ref);
-    console.log('numOfSubCategories in get: ');
-    console.log(numOfSubCategories);
     if(numOfSubCategories==0){
         ref.on('value',snap=>{
             snap.forEach(product=>{
@@ -67,8 +64,6 @@ function get(category){
                 products.push(item);
             });
         });
-        console.log('return');
-        console.log(products);
         return products;
     }else{
         var categories = Getter.getChildren(ref);
@@ -77,15 +72,12 @@ function get(category){
             global.counterLoop=0;
             products=products.concat(prods);
         }
-        console.log('return');
-        console.log(products);
         return products;
     }
 }
 
 //this method return the depth of subcategories of ref
 function getDepthSubCategories(ref){
-    console.log('getDepthSubCategories');
     var depth = 0;
     var categories = Getter.getChildren(ref);
     for(let i=0;i<categories.length;i++){
@@ -94,12 +86,8 @@ function getDepthSubCategories(ref){
             return -1;
         }
     }
-    console.log('categories[0] in getDepthSubCategories: ');
-    console.log(categories[0]);
     if(categories.length>0) depth = getDepthSubCategories(ref.child(categories[0]));
     depth++;
-    console.log('return');
-    console.log(depth);
     
     return depth;
 }
