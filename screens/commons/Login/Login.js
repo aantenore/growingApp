@@ -12,6 +12,7 @@ export default function Login({navigation}) {
     return (
       <View style = {styles.container}>
         <GoToButton screen='HomeCustomer' navigation={navigation} params={{user:'testshop',context:'customer',table:'1'}}/>
+        <GoToButton screen='testGetProducts' navigation={navigation} params={{user:'testshop',context:'customer',table:'1'}}/>
         <GoToButton screen='HomeVendor' navigation={navigation} params={{user:'testshop',context:'vendor',table:undefined}}/>
       </View>
     );

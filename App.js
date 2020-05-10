@@ -11,6 +11,7 @@ import TodayOffersScreen from './screens/commons/TodayOffers/TodayOffers';
 import HistoryScreen from './screens/vendors/History/History';
 import OrdersScreen from './screens/vendors/Orders/Orders';
 import Cart from './components/Cart';
+import testGetProducts from './test/testGetProducts'
 
 import './node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Animated } from 'react-native';
@@ -68,6 +69,9 @@ function App(){
         <Stack.Screen name="HomeVendor" component={HomeVendorScreen} options={commonOptions} />
         <Stack.Screen name="History" component={HistoryScreen} options={commonOptions} />
         <Stack.Screen name="Orders" component={OrdersScreen} options={commonOptions} />
+
+        <Stack.Screen name="testGetProducts" component={testGetProducts} options={commonOptions} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
