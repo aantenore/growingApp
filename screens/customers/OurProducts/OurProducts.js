@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import { View, Text } from 'react-native';
+import { styles } from '../../../assets/style';
 import GoToButton from '../../../components/GoToButton'
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -8,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 export default function OurProducts({ navigation }) {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View  style = {styles.container}>
         <Text>OurProducts Screen Works!</Text>
         <GoToButton screen={global.lastScreen==='HomeCustomer'?'HomeCustomer':'HomeVendor'} navigation={navigation}/>
       </View>

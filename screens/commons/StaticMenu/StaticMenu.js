@@ -1,13 +1,22 @@
 
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
+import { styles,color } from '../../../assets/style';
 import GoToButton from '../../../components/GoToButton';
 import ProductList from '../../../components/ProductList';
+
 //TODO - Simple Menu for customer, CRUD interface for Vendor
 
 export default function StaticMenu({ navigation}) {
   return (
-    <StaticMenuComponent navigation={navigation}></StaticMenuComponent>
+    // <View style={styles.container}>
+      <div class='card' style={{ width: '100%',
+                            height: '100%',
+                            backgroundColor: color.secondary,
+                            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',}}>
+        <StaticMenuComponent navigation={navigation}></StaticMenuComponent>
+      </div>
+   // </View>
   );
 }
 
@@ -22,11 +31,12 @@ class StaticMenuComponent extends React.Component{
 
   render(){
     return(
-    <View style={{ flex: 1, justifyContent: 'center' }}>
-      <ProductList navigation={this.props.navigation}></ProductList>
-      <Text>{'StaticMenu Screen Works!'+(global.lastScreen==='HomeCustomer'?' CUSTOMER VIEW!':' VENDOR VIEW!')}</Text>
-      <GoToButton screen={global.lastScreen==='HomeCustomer'?'HomeCustomer':'HomeVendor'} navigation={this.props.navigation}/>
-    </View>);
+      <div class="mr-auto ml-auto mt-auto mb-auto">
+        <ScrollView horizontal={true}>
+          <ProductList navigation={this.props.navigation}></ProductList>
+        </ScrollView>
+      </div>
+    );
   }
 }
 

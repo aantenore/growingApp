@@ -1,15 +1,19 @@
-import { Button,View, Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import * as React from 'react';
+import { styles } from '../assets/style';
 
 export default class GoToButton extends React.Component {
     
  
   render(){
     return (
-        <Button
-            title={"Go to "+this.props?.screen}
-            onPress={()=>{this.handlePress()}}
-        />
+         <TouchableOpacity
+             title={"Go to "+this.props?.screen}
+             onPress={()=>{this.handlePress()}}
+             style = {styles.gotobutton}
+             >
+               <Text style = {styles.buttontext}>{"Go to "+this.props?.screen}</Text>
+         </TouchableOpacity>
     );
     };
 

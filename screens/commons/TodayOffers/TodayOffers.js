@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import { View, Text } from 'react-native';
+import { styles } from '../../../assets/style';
 import GoToButton from '../../../components/GoToButton';
 import firebase from '../../../constants/database';
 
@@ -8,7 +9,7 @@ import firebase from '../../../constants/database';
 
 export default function TodayOffers({ navigation}) {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style = {styles.container}>
         <Text>{'Login Screen Works!'+(global.lastScreen==='HomeCustomer'?' CUSTOMER VIEW!':' VENDOR VIEW!')}</Text>
         <GoToButton screen={global.lastScreen==='HomeCustomer'?'HomeCustomer':'HomeVendor'} navigation={navigation}/>
       </View>

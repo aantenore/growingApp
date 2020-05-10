@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, HeaderBackground } from '@react-navigation/stack';
 import LoginScreen from './screens/commons/Login/Login';
@@ -12,7 +12,43 @@ import HistoryScreen from './screens/vendors/History/History';
 import OrdersScreen from './screens/vendors/Orders/Orders';
 import Cart from './components/Cart';
 
+import './node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { Animated } from 'react-native';
+import { color } from './assets/style';
+
 //TODO hide header for HomeScreens
+/*const forFade = ({ current, next }) => {
+  const opacity = Animated.add(
+    current.progress,
+    next ? next.progress : 0
+  ).interpolate({
+    inputRange: [0, 1, 2],
+    outputRange: [0, 1, 0],
+  });
+
+  return {
+   // leftButtonStyle: { opacity },
+   // rightButtonStyle: { opacity },
+    titleStyle: { opacity },
+    backgroundStyle: { opacity },
+  };
+}; 
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 1000,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
+const forFade = ({ current, closing }) => ({
+  cardStyle: {
+    opacity: current.progress,
+  },
+});*/
 
 const Stack = createStackNavigator();
 
@@ -21,7 +57,7 @@ function App(){
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={LoginScreen} options={commonOptions} />
+        <Stack.Screen name="Login" component={LoginScreen} options={loginOptions} />
         <Stack.Screen name="StaticMenu" component={StaticMenuScreen} options={commonOptions} />
         <Stack.Screen name="TodayOffers" component={TodayOffersScreen} options={commonOptions} />
 
@@ -36,12 +72,32 @@ function App(){
     </NavigationContainer>
   );
 }
-
+const loginOptions = {
+  headerShown: false,
+}
 const commonOptions =
-{
-  headerStyle :{ backgroundColor: 'transparent'} ,
-  title: "",
-  headerRight: ()=>(<Cart></Cart>) 
+{ headerTintColor: color.white,
+  headerTitleStyle: {
+    //fontWeight: '200',
+    display: 'none'
+  },
+  headerMode: screen,
+  headerStyle :{ 
+    backgroundColor: color.secondary,
+    elevation: 0,
+    shadowOpacity: 0
+  },
+  headerRightContainerStyle:{ paddingRight: '3rem'},
+  headerRight: () => (<Cart></Cart>)
+ 
+  // transitionSpec: {
+  //   open: config,
+  //   close: config,
+  // },
+  //cardStyleInterpolator: forFade ,
+  // headerStyleInterpolator: {forFade},
+
+    
 }
 
 

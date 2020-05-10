@@ -2,6 +2,7 @@ import { Button,View, Text, FlatList,ScrollView } from 'react-native';
 import * as React from 'react';
 import ProductListItem from './ProductListItem'
 import firebaseClass from '../constants/database';
+import { styles } from '../assets/style';
 
 
 export default class ProductList extends React.Component {
@@ -10,20 +11,20 @@ export default class ProductList extends React.Component {
         console.log('combinedProductsArray: ',this.state.combinedProductsArray);
         console.log('fixedProductsArray: ',this.state.fixedProductsArray);
     return (
-        <View style={{flex: 1, marginTop: 22}}>
-            <ScrollView>
+        <div class="pre-scrollable" style={{  width: '100%',
+        height: '100%',}}>
             <FlatList data={this.state.combinedProductsArray} renderItem={({item,index})=>{
                 return(
-                    <ProductListItem item={item} index={index}></ProductListItem>
-                )
-            }}></FlatList>
-            <View style={{marginTop: 0}} > 
+                    <ProductListItem item={item} index={index} style= {styles.plistitem}></ProductListItem>
+                     )
+                 }}>
+            </FlatList>
             <FlatList data={this.state.fixedProductsArray} renderItem={({item,index})=>{
-                    return (<ProductListItem item={item} index={index} navigation={this.props.navigation}></ProductListItem>);
-            }}></FlatList>
-            </View>
-            </ScrollView>
-       </View>
+                    return (<ProductListItem item={item} index={index} style= {styles.plistitem} 
+                        navigation={this.props.navigation}></ProductListItem>);
+                }}>
+            </FlatList>
+            </div>
     );
   };
 

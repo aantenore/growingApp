@@ -1,25 +1,23 @@
-import { Button,View, Text, StyleSheet, Platform } from 'react-native';
+import { Button,View, Text, Platform } from 'react-native';
 import Slider from "react-native-slider";
 import * as React from 'react';
 import Cart from './Cart';
+import { styles } from '../assets/style';
 
-export default class GoToButton extends React.Component {
+export default class InputOrSlider extends React.Component {
 
     render(){
     return (
-        <View style={{
-            flex:1,
-            flexDirection:'column',
-            }}>
-            <View style={{
-                backgroundColor: this.props.index % 2==0?'red':'yellow',
-            }}>
-            <Text style={styles.listItem}>{this.props.item['category']}</Text>
+            <View style={
+              //{backgroundColor: this.props.index % 2==0?'#ff5c5c':'#ff5c5c'},
+               styles.inputorslider}>
+            <Text style={styles.inputtext}>{this.props.item['category']}</Text>
                 {Object.keys(this.props.item).map(el=>{
                     if(el!='category'){
                     console.log(Number.parseInt(this.props.item[el].split('-')[0]));
-                    let result=[<Text>{el}</Text>]
-                    result.push(<Slider
+                    let result=[<Text style= {styles.inputtext}>{el}</Text>]
+                    result.push(
+                    <Slider  style={{width: 200, height: 40}}
                     value={Number.parseInt(this.props.item[el].split('-')[0])}
                     onValueChange={value => {let valueList = this.state.valueList;
                                             valueList[el]=value;
@@ -28,16 +26,20 @@ export default class GoToButton extends React.Component {
                     maximumValue={Number.parseInt(this.props.item[el].split('-')[1])}
                     step={1}>
                     </Slider>);
-                    result.push(<Text>
+                    result.push(<Text style = {styles.inputtext}>
                         Value: {this.state.valueList[el]}
                     </Text>)
                     return result;
                     }
                     else return (<Text></Text>);
                 })}
-            <Button title='Ordina!' onPress={()=>{this.addToCart()}}></Button>
+                
+                  <Button title='Ordina' 
+                      style = {styles.ordinabutton} 
+                      onPress={()=>{this.addToCart()}}>
+                  </Button>
+                
             </View>
-        </View>
     );
   };
 
@@ -71,13 +73,5 @@ export default class GoToButton extends React.Component {
 
 var navigation=null;
 
-
-const styles = StyleSheet.create({
-    item: {
-   padding: 10,
-   fontSize: 18,
-   height: 44,
- },
-})
 
 //{this.props.item.features[el].split('-')[0]} minimumValue={this.props.item.features[el].split('-')[1]}

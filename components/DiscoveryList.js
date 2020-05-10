@@ -1,7 +1,9 @@
-import { Button,View, Text, FlatList, ScrollView } from 'react-native';
+import { View,  FlatList, ScrollView } from 'react-native';
 import * as React from 'react';
 import firebaseClass from '../constants/database';
 import InputOrSlider from './InputOrSlider'
+import { styles } from '../assets/style';
+
 
 
 export default class DiscoveryList extends React.Component {
@@ -9,15 +11,17 @@ export default class DiscoveryList extends React.Component {
     render(){
         console.log(this.state.categoriesArray);
     return (
-        <View style={{flex: 1, marginTop: 22}}>
-            <ScrollView>
-            <FlatList data={this.state.categoriesArray} renderItem={({item,index})=>{
-                return(
-                    <InputOrSlider item={item} index={index} navigation={this.props.navigation}></InputOrSlider>
-                )
-            }}></FlatList>
-            </ScrollView>
-       </View>
+       
+        <div class="mr-auto ml-auto mt-auto mb-auto">
+         <ScrollView horizontal={true} style= {styles.scrollview} >
+                <FlatList data={this.state.categoriesArray}
+                renderItem={({item,index})=>{
+                    return(
+                            <InputOrSlider item={item} index={index} navigation={this.props.navigation}></InputOrSlider>
+                    )
+                }}></FlatList>
+            </ScrollView>      
+        </div>
     );
   };
 
@@ -46,6 +50,7 @@ export default class DiscoveryList extends React.Component {
         this.setState({categoriesArray});
     }); 
   }
+  
 }
 
 
