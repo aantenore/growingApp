@@ -26,12 +26,12 @@ class Getter{
         global.counterLoop=0;
         if(constants.nameOf(category)===constants.nameOf(constants.salty)||constants.nameOf(category)===constants.nameOf(constants.sweet)){
         let cat = constants.foods+constants.fixed+(category?category.indexOf('/')==0?category:constants.pathOf(category):'');
-        let result = getProducts(cat);
+        let result = _getProducts(cat);
         cat = constants.foods+constants.combined+(category?category.indexOf('/')==0?category:constants.pathOf(category):'');
-        return result.concat(getProducts(cat));
+        return result.concat(_getProducts(cat));
         }else {
         let cat = constants.foods+(category?category.indexOf('/')==0?category:constants.pathOf(category):'');
-        return getProducts(cat);
+        return _getProducts(cat);
         }
     }
 
@@ -39,7 +39,7 @@ class Getter{
      static getDrinks(category){
         global.counterLoop=0;
         let cat = constants.drinks+(category?category.indexOf('/')==0?category:constants.pathOf(category):'');
-        return getProducts(cat);
+        return _getProducts(cat);
     }
     
     //this method returns the list of root children
@@ -51,7 +51,7 @@ class Getter{
     static getAvailableRawMaterials(rawMaterialCategory){
         global.counterLoop=0;
         let cat = constants.rawMaterials+(rawMaterialCategory?rawMaterialCategory.indexOf('/')==0?rawMaterialCategory:constants.pathOf(rawMaterialCategory):'');
-        return getProducts(cat);
+        return _getProducts(cat);
     }
 
     //this method return the feature description string given the features object or raw material name
@@ -119,8 +119,7 @@ class Getter{
     }
 }
 
-//this method iteratively searches for products
-function getProducts(category){
+function _getProducts(category){
     global.counterLoop++;
     if(global.counterLoop>constants.counterLoop) return;
     var ref = Getter.getDbRef(constants.productsPath()+category);
@@ -141,7 +140,7 @@ function getProducts(category){
     }else{
         var categories = Getter.getChildren(ref);
         for(let i=0;i<categories.length;i++){
-            let prods = getProducts(category+constants.pathOf(categories[i]));
+            let prods = _getProducts(category+constants.pathOf(categories[i]));
             global.counterLoop=0;
             products=products.concat(prods);
         }
@@ -149,7 +148,6 @@ function getProducts(category){
     }
 }
 
-//this method iteratively searches for products
 function _getFeatures(categoryName){
     if(typeof categoryName === 'string'){
         var category = categoryName;
@@ -190,7 +188,6 @@ function _getFeatures(categoryName){
     return features;
 }
 
-//this method returns the depth of subcategories of ref
 function _getDepthSubCategories(ref){
     var depth = 0;
     var categories = Getter.getChildren(ref);
