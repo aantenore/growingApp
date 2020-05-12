@@ -1,4 +1,5 @@
 const constants = {
+    defaultUser :"testshop",
     foods : "/mangiare",
     drinks : "/bere",
     fixed : "/fisso",

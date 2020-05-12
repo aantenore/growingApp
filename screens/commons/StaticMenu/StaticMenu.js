@@ -26,7 +26,6 @@ class StaticMenuComponent extends React.Component{
 
   constructor(props){
     super(props);
-    console.log('/'+global.user+'/products');
   }
 
   render(){

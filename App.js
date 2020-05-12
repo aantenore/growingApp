@@ -11,11 +11,13 @@ import TodayOffersScreen from './screens/commons/TodayOffers/TodayOffers';
 import HistoryScreen from './screens/vendors/History/History';
 import OrdersScreen from './screens/vendors/Orders/Orders';
 import Cart from './components/Cart';
-import testGetProducts from './test/testGetProducts'
+import testGetProducts from './test/testGetProducts';
+import {storeShopName,retrieveShopName} from './constants/userPreferences'
 
 import './node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Animated } from 'react-native';
 import { color } from './assets/style';
+import constants from './constants/constants';
 
 //TODO hide header for HomeScreens
 /*const forFade = ({ current, next }) => {
@@ -55,6 +57,11 @@ const Stack = createStackNavigator();
 
 function App(){
   global.currentScreen='Login';
+  //storeShopName('testshopWriteTest');
+  retrieveShopName().then((name)=>{
+    global.user=name;
+  });
+  //global.user = constants.defaultUser;
   return (
     <NavigationContainer>
       <Stack.Navigator>

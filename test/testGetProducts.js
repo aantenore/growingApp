@@ -3,6 +3,7 @@ import { View, Button } from "react-native";
 import Getter from '../service/Getter';
 import constants from '../constants/constants';
 import Product from '../Utils/Product';
+import {storeShopName,retrieveShopName} from '../constants/userPreferences'
 
 
 export default function testGetProducts(){
@@ -25,9 +26,8 @@ class ciao extends React.Component{
             c_2:'vvvv',
             c_3:'ai',
         }
-        console.log(Getter.getFixedFoodCategoryFeaturesObject('diavola'));
-        console.log(Getter.getFixedDrinkCategoryFeaturesObject('birra'));
-        console.log(Getter.getRawMaterialCategoryFeaturesObject('bufala'));
+        //console.log(storeShopName('testshopWriteTest'));
+        console.log(global.user);
         return(<Button onPress={()=>{this.setState({})}} title='RELOAD'></Button>);
     };
  
