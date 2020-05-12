@@ -92,14 +92,13 @@ class Getter{
         }
     }
 
-
     //this method return the string feature names array of a food or food category
     static getFixedFoodCategoryFeaturesNames(productCategoryName){
-        return _getFeatureNames(rawMaterialCategoryName,1);
+        return _getFeatureNames(productCategoryName,1);
     }
     //this method return the string feature names array of a drink or drink category
     static getFixedDrinkCategoryFeaturesNames(productCategoryName){
-        return _getFeatureNames(rawMaterialCategoryName,2);
+        return _getFeatureNames(productCategoryName,2);
     }
     //this method return the string feature names array of a rawMaterial or rawMaterial category
     static getRawMaterialCategoryFeatureNames(rawMaterialCategoryName){
@@ -109,11 +108,11 @@ class Getter{
     static getFeaturesNames(input,type){
         switch(type){
             case constants.foods:
-                return _getFeatureNames(rawMaterialCategoryName,1);
+                return _getFeatureNames(input,1);
             case constants.drinks:
-                return _getFeatureNames(rawMaterialCategoryName,2);
+                return _getFeatureNames(input,2);
             case constants.rawMaterials:
-                return _getFeatureNames(rawMaterialCategoryName,3);
+                return _getFeatureNames(input,3);
             default: return {};
         }
     }
@@ -228,11 +227,11 @@ function _buildPath(basePath, targetProduct){
 }
 
 function _getFeaturesObject(name,num){
-    let basePath = num===3?constants.rawMaterialsPath():num>3?'':num===1?constants.fixedPathOf(constants.foodsPath()):num===2?constants.fixedPathOf(constants.drinksPath()):'';
+    let basePath = num===3?(constants.rawMaterialsPath()):num===1?(constants.fixedPathOf(constants.foodsPath())):num===2?(constants.fixedPathOf(constants.drinksPath())):'';
     let path = _buildPath(basePath,name);
     let isNotEmpty = path?.length!==0&&path!==constants.salty&&path!==constants.sweet;
-    path = num===3?(constants.rawMaterials + constants.pathOf(path?path:name)):((num===1?constants.fixedPathOf(constants.foods):num===2?constants.fixedPathOf(constants.drinks):'') 
-        + (path?constants.pathOf(path):'') + (isNotEmpty?'':constants.pathOf(name)));
+    path = (num===3?(constants.rawMaterials + constants.pathOf(path?path:name)):num===1?(constants.fixedPathOf(constants.foods)):num===2?(constants.fixedPathOf(constants.drinks)):'') 
+        + (path?constants.pathOf(path):'') + (isNotEmpty?'':constants.pathOf(name));
     return name?path?_getFeatures(path):{}:{};
 }
 

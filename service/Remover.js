@@ -61,24 +61,28 @@ class Remover{
     static removeFixedSaltyDrinkCategory(category){
         //for now there is no division salty sweet drinks --> if change, let substitute fixedDrinksPath with saltyFixedDrinksPath
         let basePath = constants.fixedDrinksPath();
+        //let basePath = constants.saltyFixedDrinksPath();
         _removeCategory(basePath,category);
     }
 
     static removeCombinedSaltyDrinkCategory(category){
         //for now there is no division salty sweet drinks --> if change, let substitute combinedDrinksPath with saltyCombinedDrinksPath
         let basePath = constants.combinedDrinksPath();
+        //let basePath = constants.saltyCombinedDrinksPath();
         _removeCategory(basePath,category);
     }
 
     static removeFixedSweetDrinkCategory(category){
         //for now there is no division salty sweet drinks --> if change, let substitute fixedDrinksPath with sweetFixedDrinksPath
         let basePath = constants.fixedDrinksPath();
+        //let basePath = constants.sweetFixedDrinksPath();
         _removeCategory(basePath,category);
     }
 
     static removeCombinedSweetDrinkCategory(category){
         //for now there is no division salty sweet drinks --> if change, let substitute combinedDrinksPath with sweetCombinedDrinksPath
         let basePath = constants.combinedDrinksPath();
+        //let basePath = constants.sweetCombinedDrinksPath();
         _removeCategory(basePath,category);
     }
 
