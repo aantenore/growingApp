@@ -5,6 +5,8 @@ import Getter from'./Getter';
 class Setter{
     //if you are using this class pay attention at the user on which you are writing, i have setted it to 'testshopWriteTest' int the App.js row 60
 
+    //these functions work also for update!
+
     static insertSweetFixedFood(productObj,categoryName){
         _insertFood(productObj,true,false,categoryName,false);
     }
