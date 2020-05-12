@@ -5,8 +5,9 @@ import Getter from'./Getter';
 class Remover{
     //if you are using this class pay attention at the user on which you are removing, i have setted it to 'testshopWriteTest' int the App.js row 60
 
-    static removeProduct(productObj){
-        if(dataObj.category&&dataObj.name) _remove(dataObj.category+productObj.name)
+    static removeProduct(dataObj){
+        console.log(dataObj.category+constants.pathOf(dataObj.name));
+        if(dataObj.category&&dataObj.name) _remove(constants.productsPath()+dataObj.category+constants.pathOf(dataObj.name));
     }
 
     static removeCategory(categoryName,type,saltyOrSweet,fixedOrCombined){
@@ -58,22 +59,26 @@ class Remover{
     }
 
     static removeFixedSaltyDrinkCategory(category){
-        let basePath = constants.saltyFixedDrinksPath();
+        //for now there is no division salty sweet drinks --> if change, let substitute fixedDrinksPath with saltyFixedDrinksPath
+        let basePath = constants.fixedDrinksPath();
         _removeCategory(basePath,category);
     }
 
     static removeCombinedSaltyDrinkCategory(category){
-        let basePath = constants.saltyCombinedDrinksPath();
+        //for now there is no division salty sweet drinks --> if change, let substitute combinedDrinksPath with saltyCombinedDrinksPath
+        let basePath = constants.combinedDrinksPath();
         _removeCategory(basePath,category);
     }
 
     static removeFixedSweetDrinkCategory(category){
-        let basePath = constants.sweetFixedDrinksPath();
+        //for now there is no division salty sweet drinks --> if change, let substitute fixedDrinksPath with sweetFixedDrinksPath
+        let basePath = constants.fixedDrinksPath();
         _removeCategory(basePath,category);
     }
 
     static removeCombinedSweetDrinkCategory(category){
-        let basePath = constants.sweetCombinedDrinksPath();
+        //for now there is no division salty sweet drinks --> if change, let substitute combinedDrinksPath with sweetCombinedDrinksPath
+        let basePath = constants.combinedDrinksPath();
         _removeCategory(basePath,category);
     }
 
@@ -84,14 +89,17 @@ class Remover{
 }
 
 function _remove(dataPath){
+console.log(dataPath);
 let ref = Getter.getDbRef(dataPath);
 ref?.remove();
 }
 
 function _removeCategory(basePath,category){
-    let commonIndex = basePath.indexOf(category);
+    let temp = category.substring(0,category.lastIndexOf('/'));
+    let commonIndex = basePath.indexOf(temp);
     let path = undefined;
-    if(commonIndex>-1) path = basePath.substring(0,commonIndex) + constants.pathOf(category);
+    commonIndex = commonIndex>0?commonIndex:basePath.length;
+    path = basePath.substring(0,commonIndex) + constants.pathOf(category);
     if(path) _remove(path);
 }
 

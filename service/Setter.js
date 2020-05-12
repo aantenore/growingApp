@@ -149,11 +149,13 @@ function _create(obj,type){
     type=constants.nameOf(type);
     let ft = constants.nameOf(constants.features);
     let pr = constants.nameOf(constants.products);
-    Object.keys(obj).forEach(prop=>{
-        if(prop!=='name'&&prop!=='category'){
-            tempResult[prop]=obj[prop];
-        }
-    });
+    if(obj){
+        Object.keys(obj).forEach(prop=>{
+            if(prop!=='name'&&prop!=='category'){
+                tempResult[prop]=obj[prop];
+            }
+        });
+    }
     let key = type===pr?(obj['name']):(type===ft)?ft:'';
     if(tempResult) result[key] = tempResult;
     return result;

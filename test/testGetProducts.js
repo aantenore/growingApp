@@ -3,6 +3,8 @@ import { View, Button } from "react-native";
 import Getter from '../service/Getter';
 import constants from '../constants/constants';
 import Product from '../Utils/Product';
+import Remover from '../service/Remover';
+import Setter from '../service/Setter';
 
 
 export default function testGetProducts(){
@@ -36,21 +38,20 @@ class ciao extends React.Component{
         console.log(Getter.getFixedDrinkCategoryFeaturesObject('birra'));
         console.log(Getter.getRawMaterialCategoryFeaturesObject('bufala'));
 */
-/*
+
         //test Setter
-        let a = {
-            ingredienti : 'i',
+/*        let rm1
+         = {
+            name : 'cotto praga',
+            category:constants.rawMaterials,
             caratteristiche: {
                 culo:1,
                 ano:2,
             },
-            descrizione: 'd',
-            name:'n',
-            c_1 :'eee',
-            c_2:'vvvv',
-            c_3:'ai',
+            descrizione: 'd'
         }
-        let rm = {
+        let rm2 = {
+            category:constants.rawMaterials+'/a',
             name : 'cotto praga',
             caratteristiche: {
                 culo:1,
@@ -59,6 +60,7 @@ class ciao extends React.Component{
             descrizione: 'd'
         }
         let fd = {
+            category:constants.drinks+constants.fixed+'/birra/buona',
             name: 'peroni',
             caratteristiche: {
                 culo:1,
@@ -68,6 +70,7 @@ class ciao extends React.Component{
         }
         let cf = {
             name: 'hamburger',
+            category:constants.foods+constants.combined+constants.salty,
             c_1: 'a',
             c_2: 'a',
             c_3: 'a',
@@ -83,13 +86,20 @@ class ciao extends React.Component{
                 ano:2,
             },
         }
-        Setter.insertRawMaterial(rm);
+        Setter.insertRawMaterial(rm1);
         Setter.insertSaltyCombinedFood(cf);
+        Setter.insertSaltyFixedDrinkCategory('birra',cg.caratteristiche);
         Setter.insertSaltyFixedDrink(fd,'birra/buona');
-        Setter.insertRawMaterial(rm,'a');
-        Setter.insertRawMaterialCategory('a',cg);
-*/
-        return(<Button onPress={()=>{this.setState({})}} title='RELOAD'></Button>);
+        Setter.insertRawMaterial(rm2,'a');
+        Setter.insertRawMaterialCategory('a',cg.caratteristiche);
+        //test remover
+/*        Remover.removeProduct(rm1);
+        Remover.removeProduct(cf);
+        Remover.removeProduct(rm2);
+        Remover.removeProduct(fd);
+        Remover.removeFixedSweetDrinkCategory('birra');
+        Remover.removeRawMaterialCategory('/materie_prime/a');
+*/       return(<Button onPress={()=>{this.setState({})}} title='RELOAD'></Button>);
     };
  
     
