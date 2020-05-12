@@ -57,7 +57,7 @@ const Stack = createStackNavigator();
 
 function App(){
   global.currentScreen='Login';
-  //storeShopName('testshopWriteTest');
+  storeShopName('testshopWriteTest');
   retrieveShopName().then((name)=>{
     global.user=name;
   });

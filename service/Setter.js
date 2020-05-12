@@ -1,9 +1,9 @@
 import firebaseClass from '../constants/database';
 import constants from '../constants/constants';
 import Getter from'./Getter';
-import { cos } from 'react-native-reanimated';
 
 class Setter{
+    //if you are using this class pay attention at the user on which you are writing, i have setted it to 'testshopWriteTest' int the App.js row 60
 
     static insertSweetFixedFood(productObj,categoryName){
         _insertFood(productObj,true,false,categoryName,false);
