@@ -29,6 +29,13 @@ class Remover{
         }
     }
 
+    static removeCategoryByContext(categoryName,context){
+        if(context?.type) var a = context?.type;
+        if(context?.saltyOrSweet) var b = context?.saltyOrSweet;
+        if(context?.fixedOrCombined) var c = context?.fixedOrCombined;
+        Remover.removeCategory(categoryName,a,b,c);
+    }
+
     static removeFixedSaltyFoodCategory(category){
         let basePath = constants.saltyFixedFoodsPath();
         _removeCategory(basePath,category);

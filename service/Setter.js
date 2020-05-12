@@ -132,6 +132,15 @@ class Setter{
         }
     }
 
+    static insertByContext(name,context){
+        if(context?.type) var a = context?.type;
+        if(context?.saltyOrSweet) var b = context?.saltyOrSweet;
+        if(context?.fixedOrCombined) var c = context?.fixedOrCombined;
+        if(context?.productOrCategory) var d = context?.productOrCategory;
+        Setter.insert(name,a,b,c,d);
+
+    }
+
 }
 
 function _create(obj,type){
