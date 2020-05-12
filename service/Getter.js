@@ -48,7 +48,7 @@ class Getter{
     }
 
     //this method returns an array of raw material objects in a category if given, else an array of all raw material objects
-    static getAvailableRawMaterials(rawMaterialCategory){
+    static getRawMaterials(rawMaterialCategory){
         global.counterLoop=0;
         let cat = constants.rawMaterials+(rawMaterialCategory?rawMaterialCategory.indexOf('/')==0?rawMaterialCategory:constants.pathOf(rawMaterialCategory):'');
         return _getProducts(cat);

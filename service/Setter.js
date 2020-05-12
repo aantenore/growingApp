@@ -78,6 +78,60 @@ class Setter{
     static insertRawMaterialCategory(categoryName,features){
         _insert(features,undefined,undefined,constants.rawMaterials,categoryName,true);
     }
+
+    static insertCategory(categoryName,features,type,saltyOrSweet,fixedOrCombined){
+        switch(type){
+            case constants.foods:
+                if(saltyOrSweet===constants.salty&&fixedOrCombined==constants.fixed)Setter.insertSaltyFixedFoodCategory(categoryName,features);
+                if(saltyOrSweet===constants.salty&&fixedOrCombined==constants.combined)Setter.insertSaltyCombinedFoodCategory(categoryName,features);
+                if(saltyOrSweet===constants.sweet&&fixedOrCombined==constants.fixed)Setter.insertSweetFixedFoodCategory(categoryName,features);
+                if(saltyOrSweet===constants.sweet&&fixedOrCombined==constants.combined)Setter.insertSweetCombinedFoodCategory(categoryName,features);
+                break;
+            case constants.drinks:
+                if(saltyOrSweet===constants.salty&&fixedOrCombined==constants.fixed)Setter.insertSaltyFixedDrinkCategory(categoryName,features);
+                if(saltyOrSweet===constants.salty&&fixedOrCombined==constants.combined)Setter.insertSaltyCombinedDrinkCategory(categoryName,features);
+                if(saltyOrSweet===constants.sweet&&fixedOrCombined==constants.fixed)Setter.insertSweetFixedDrinkCategory(categoryName,features);
+                if(saltyOrSweet===constants.sweet&&fixedOrCombined==constants.combined)Setter.insertSweetCombinedDrinkCategory(categoryName,features);
+                break;
+            case constants.rawMaterials:
+                Setter.insertRawMaterialCategory(categoryName,features);
+            default: break;
+        }
+    }
+
+    static insertProduct(productObj,categoryName,type,saltyOrSweet,fixedOrCombined){
+        switch(type){
+            case constants.foods:
+                if(saltyOrSweet===constants.salty&&fixedOrCombined==constants.fixed)Setter.insertSaltyFixedFood(productObj,categoryName);
+                if(saltyOrSweet===constants.salty&&fixedOrCombined==constants.combined)Setter.insertSaltyCombinedFood(productObj,categoryName);
+                if(saltyOrSweet===constants.sweet&&fixedOrCombined==constants.fixed)Setter.insertSweetFixedFood(productObj,categoryName);
+                if(saltyOrSweet===constants.sweet&&fixedOrCombined==constants.combined)Setter.insertSweetCombinedFood(productObj,categoryName);
+                break;
+            case constants.drinks:
+                if(saltyOrSweet===constants.salty&&fixedOrCombined==constants.fixed)Setter.insertSaltyFixedDrink(productObj,categoryName);
+                if(saltyOrSweet===constants.salty&&fixedOrCombined==constants.combined)Setter.insertSaltyCombinedDrink(productObj,categoryName);
+                if(saltyOrSweet===constants.sweet&&fixedOrCombined==constants.fixed)Setter.insertSweetFixedDrink(productObj,categoryName);
+                if(saltyOrSweet===constants.sweet&&fixedOrCombined==constants.combined)Setter.insertSweetCombinedDrink(productObj,categoryName);
+                break;
+            case constants.rawMaterials:
+                Setter.insertRawMaterial(productObj,categoryName);
+            default: break;
+        }
+    }
+
+    static insert(name,type,saltyOrSweet,fixedOrCombined,productOrCategory){
+        switch(productOrCategory){
+            case constants.products:
+                Setter.insertProduct(name,type,saltyOrSweet,fixedOrCombined);
+                break;
+            case constants.categories:
+                Setter.insertCategory(name,type,saltyOrSweet,fixedOrCombined);
+                break;
+            default:
+                break;
+        }
+    }
+
 }
 
 function _create(obj,type){
@@ -106,7 +160,7 @@ return _create(productFeature,constants.products);
 
 function _push(elementToPost,path){
     let ref = Getter.getDbRef(path);
-    ref.update(elementToPost);
+    ref?.update(elementToPost);
 }
 
 function _insert(obj,fixedFlag=undefined,saltyFlag=undefined,type,categoryName,categoryFlag){
@@ -120,7 +174,7 @@ function _insertFood(productObj,fixedFlag,saltyFlag,categoryName,categoryFlag){
 }
 
 function _insertDrink(productObj,fixedFlag,saltyFlag,categoryName,categoryFlag){
-    //for now there is no division salty sweat drinks --> if change, let substitute undefined with constants.sweat or constants.salty
+    //for now there is no division salty sweet drinks --> if change, let substitute undefined with constants.sweet or constants.salty
     _insert(productObj,fixedFlag,undefined,constants.drinks,categoryName,categoryFlag);
 }
 
