@@ -1,6 +1,7 @@
 import firebaseClass from '../constants/database';
 import constants from '../constants/constants';
 import Getter from'./Getter';
+import { cos } from 'react-native-reanimated';
 
 class Setter{
 
@@ -8,7 +9,7 @@ class Setter{
         _insertFood(productObj,true,false,categoryName,false);
     }
 
-    static static insertSweetCombinedFood(productObj,categoryName){
+    static insertSweetCombinedFood(productObj,categoryName){
         _insertFood(productObj,false,false,categoryName,false);
     }
 
@@ -16,7 +17,7 @@ class Setter{
         _insertFood(productObj,true,true,categoryName,false);
     }
 
-    static static insertSaltyCombinedFood(productObj,categoryName){
+    static insertSaltyCombinedFood(productObj,categoryName){
         _insertFood(productObj,false,true,categoryName,false);
     }
 
@@ -24,7 +25,7 @@ class Setter{
         _insertDrink(productObj,true,false,categoryName,false);
     }
 
-    static static insertSweetCombinedDrink(productObj,categoryName){
+    static insertSweetCombinedDrink(productObj,categoryName){
         _insertDrink(productObj,false,false,categoryName,false);
     }
 
@@ -32,19 +33,19 @@ class Setter{
         _insertDrink(productObj,true,true,categoryName,false);
     }
 
-    static static insertSaltyCombinedDrink(productObj,categoryName){
+    static insertSaltyCombinedDrink(productObj,categoryName){
         _insertDrink(productObj,false,true,categoryName,false);
     }
 
     static insertRawMaterial(productObj,categoryName){
-        _insert(productFeature=productObj,type=constants.rawMaterials,categoryName=categoryName,categoryFlag=false);
+        _insert(productObj,undefined,undefined,constants.rawMaterials,categoryName,false);
     }
 
     static insertSweetFixedFoodCategory(categoryName,features){
         _insertFood(features,true,false,categoryName,true);
     }
 
-    static static insertSweetCombinedFoodCategory(categoryName,features){
+    static insertSweetCombinedFoodCategory(categoryName,features){
         _insertFood(features,false,false,categoryName,true);
     }
 
@@ -52,7 +53,7 @@ class Setter{
         _insertFood(features,true,true,categoryName,true);
     }
 
-    static static insertSaltyCombinedFoodCategory(categoryName,features){
+    static insertSaltyCombinedFoodCategory(categoryName,features){
         _insertFood(features,false,true,categoryName,true);
     }
 
@@ -60,7 +61,7 @@ class Setter{
         _insertDrink(features,true,false,categoryName,true);
     }
 
-    static static insertSweetCombinedDrinkCategory(categoryName,features){
+    static insertSweetCombinedDrinkCategory(categoryName,features){
         _insertDrink(features,false,false,categoryName,true);
     }
 
@@ -68,31 +69,33 @@ class Setter{
         _insertDrink(features,true,true,categoryName,true);
     }
 
-    static static insertSaltyCombinedDrinkCategory(categoryName,features){
+    static insertSaltyCombinedDrinkCategory(categoryName,features){
         _insertDrink(features,false,true,categoryName,true);
     }
 
     static insertRawMaterialCategory(categoryName,features){
-        _insert(productFeature=features,type=constants.rawMaterials,categoryName=categoryName,categoryFlag=true);
+        _insert(features,undefined,undefined,constants.rawMaterials,categoryName,true);
     }
 }
 
 function _create(obj,type){
-    let result={};
+    let tempResult={};
+    let result = {};
     type=constants.nameOf(type);
-    let rm = constants.nameOf(constants.rawMaterials);
+    let ft = constants.nameOf(constants.features);
     let pr = constants.nameOf(constants.products);
     Object.keys(obj).forEach(prop=>{
-        if(feature!=='name'&&feature!=='category'){
-            result[prop]=obj[prop];
+        if(prop!=='name'&&prop!=='category'){
+            tempResult[prop]=obj[prop];
         }
     });
-    result[type===pr?obj[name]:type===rm?rm:''];
+    let key = type===pr?(obj['name']):(type===ft)?ft:'';
+    if(tempResult) result[key] = tempResult;
     return result;
 }
 
 function _createCategory(categoryFeature){
-return _create(categoryFeature,constants.products);
+return _create(categoryFeature,constants.features);
 }
 
 function _createProduct(productFeature){
@@ -101,7 +104,7 @@ return _create(productFeature,constants.products);
 
 function _push(elementToPost,path){
     let ref = Getter.getDbRef(path);
-    ref.set(elementToPost);
+    ref.update(elementToPost);
 }
 
 function _insert(obj,fixedFlag=undefined,saltyFlag=undefined,type,categoryName,categoryFlag){
@@ -114,8 +117,9 @@ function _insertFood(productObj,fixedFlag,saltyFlag,categoryName,categoryFlag){
     _insert(productObj,fixedFlag,saltyFlag,constants.foods,categoryName,categoryFlag);
 }
 
-function _insertDrink(productObj,fixedFlag,saltyFlag,categoryName){
-    _insert(productObj,fixedFlag,saltyFlag,constants.drinks,categoryName,categoryFlag);
+function _insertDrink(productObj,fixedFlag,saltyFlag,categoryName,categoryFlag){
+    //for now there is no division salty sweat drinks --> if change, let substitute undefined with constants.sweat or constants.salty
+    _insert(productObj,fixedFlag,undefined,constants.drinks,categoryName,categoryFlag);
 }
 
 export default Setter;
