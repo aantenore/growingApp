@@ -3,6 +3,7 @@ const constants = {
     foods : "/mangiare",
     drinks : "/bere",
     fixed : "/fisso",
+    categories: "/categories",
     combined : "/combinato",
     sweet : "/dolce",
     fixedSweet:"/fisso/dolce",
