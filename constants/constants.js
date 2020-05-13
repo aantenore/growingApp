@@ -21,7 +21,7 @@ const constants = {
     pathOf: (nameWithoutSlash) => nameWithoutSlash?.indexOf('/')===0?nameWithoutSlash:('/'+nameWithoutSlash),
     fixedPathOf : (path) => (path?.indexOf('/')===0?path:'/'+path)+constants.fixed,
     combinedPathOf : (path) => (path?.indexOf('/')===0?path:'/'+path)+constants.combined,
-    productsPath: () => '/'+global.user+constants.products,
+    productsPath: () => constants.products,
     foodsPath : () => constants.productsPath()+constants.foods,
     drinksPath : () => constants.productsPath()+constants.drinks,
     sweetFixedFoodsPath : () => constants.foodsPath()+constants.fixedSweet,

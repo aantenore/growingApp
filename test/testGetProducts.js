@@ -36,7 +36,7 @@ class ciao extends React.Component{
         //test Getter
         console.log(Getter.getFixedFoodCategoryFeaturesObject('salato'));
         console.log(Getter.getFixedDrinkCategoryFeaturesObject('ipa'));
-        console.log(Getter.getRawMaterialCategoryFeaturesObject('mozzarella'));
+        console.log(Getter.getRawMaterialCategoryFeaturesObject('affettato'));
         console.log(Getter.getFoods());
         console.log(Getter.getDrinks());
         console.log(Getter.getRawMaterials());

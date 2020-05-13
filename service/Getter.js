@@ -6,7 +6,7 @@ class Getter{
 
     //this method returns a snapshot of db given a path
     static getDbRef(path){
-        let p = path?path:'/'
+        let p = '/'+global.user+(path?path:'');
         return firebaseClass.db().ref(p);
     }
 
