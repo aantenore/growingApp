@@ -249,8 +249,8 @@ function _getFeaturesObject(name,num){
     let basePath = num===3?(constants.rawMaterialsPath()):num===1?(constants.fixedPathOf(constants.foodsPath())):num===2?(constants.fixedPathOf(constants.drinksPath())):'';
     let path = _buildPath(basePath,name);
     let isNotEmpty = path?.length!==0&&path!==constants.salty&&path!==constants.sweet;
-    path = (num===3?(constants.rawMaterials + constants.pathOf(path?path:name)):num===1?(constants.fixedPathOf(constants.foods)):num===2?(constants.fixedPathOf(constants.drinks)):'') 
-        + (path?constants.pathOf(path):'') + (isNotEmpty?'':constants.pathOf(name));
+    path = (num===3?(constants.rawMaterials):num===1?(constants.fixedPathOf(constants.foods)):num===2?(constants.fixedPathOf(constants.drinks)):'') 
+        + (isNotEmpty?constants.pathOf(path):'') + (isNotEmpty?'':constants.pathOf(name));
     return name?path?_getAssociatedFeatures(path):{}:{};
 }
 

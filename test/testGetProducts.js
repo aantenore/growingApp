@@ -32,17 +32,20 @@ class ciao extends React.Component{
 
     console.log(Product.getFeatureValuesObject(a));
 */
-/*
-        //test Getter
-        console.log(Getter.getFixedFoodCategoryFeaturesObject('diavola'));
-        console.log(Getter.getFixedDrinkCategoryFeaturesObject('birra'));
-        console.log(Getter.getRawMaterialCategoryFeaturesObject('bufala'));
 
-        console.log(Getter.getAllChildFeatures(constants.foods+constants.fixedSalty+constants.pathOf('hamburger')));
+        //test Getter
+        console.log(Getter.getFixedFoodCategoryFeaturesObject('salato'));
+        console.log(Getter.getFixedDrinkCategoryFeaturesObject('ipa'));
+        console.log(Getter.getRawMaterialCategoryFeaturesObject('mozzarella'));
+        console.log(Getter.getFoods());
+        console.log(Getter.getDrinks());
+        console.log(Getter.getRawMaterials());
+
+       /* console.log(Getter.getAllChildFeatures(constants.foods+constants.fixedSalty+constants.pathOf('hamburger')));
         console.log(Getter.getAllChildFeatures(constants.drinks+constants.fixed));
         console.log(Getter.getAllChildFeatures(constants.drinks+constants.fixed+constants.pathOf('birra')));
         console.log(Getter.getAllChildFeatures('/'));
-        console.log(Getter.getAllChildFeatures(constants.foods));*/
+        console.log(Getter.getAllChildFeatures(constants.foods));*/ 
 
         //test Setter
 /*        let rm1
