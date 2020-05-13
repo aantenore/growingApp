@@ -1,5 +1,6 @@
 import firebaseClass from '../constants/database';
 import constants from '../constants/constants';
+import { createFactory } from 'react';
 
 class Getter{
 
@@ -25,21 +26,38 @@ class Getter{
     static getFoods(category){
         global.counterLoop=0;
         if(constants.nameOf(category)===constants.nameOf(constants.salty)||constants.nameOf(category)===constants.nameOf(constants.sweet)){
-        let cat = constants.foods+constants.fixed+(category?category.indexOf('/')==0?category:constants.pathOf(category):'');
+        let cat = constants.foods+constants.fixed+constants.pathOf(category);
         let result = _getProducts(cat);
-        cat = constants.foods+constants.combined+(category?category.indexOf('/')==0?category:constants.pathOf(category):'');
+        cat = constants.foods+constants.combined+constants.pathOf(category);
         return result.concat(_getProducts(cat));
         }else {
-        let cat = constants.foods+(category?category.indexOf('/')==0?category:constants.pathOf(category):'');
+        let category_ = category==='/'?undefined:category;
+        let cat = constants.foods+(category_?constants.pathOf(category):'');
         return _getProducts(cat);
         }
+    }
+
+    //this method returns an array of feature objects of a category and all its children if given, else an array of all feature objects 
+    static getAllChildFeatures(category){
+        global.counterLoop=0;
+        let category_ = category==='/'?undefined:category;
+        let cat = (category_?constants.pathOf(category):'');
+        return _getAllChildFeatures(cat);
     }
 
      //this method returns an array of drink objects in a category if given, else an array of all drink objects
      static getDrinks(category){
         global.counterLoop=0;
-        let cat = constants.drinks+(category?category.indexOf('/')==0?category:constants.pathOf(category):'');
-        return _getProducts(cat);
+        if(constants.nameOf(category)===constants.nameOf(constants.salty)||constants.nameOf(category)===constants.nameOf(constants.sweet)){
+            let cat = constants.drinks+constants.fixed+constants.pathOf(category);
+            let result = _getProducts(cat);
+            cat = constants.drinks+constants.combined+constants.pathOf(category);
+            return result.concat(_getProducts(cat));
+        }else {
+            let category_ = category==='/'?undefined:category;
+            let cat = constants.drinks+(category_?constants.pathOf(category):'');
+            return _getProducts(cat);
+        }
     }
     
     //this method returns the list of root children
@@ -139,15 +157,16 @@ function _getProducts(category){
     }else{
         var categories = Getter.getChildren(ref);
         for(let i=0;i<categories.length;i++){
-            let prods = _getProducts(category+constants.pathOf(categories[i]));
+            let prods = undefined;
+            prods = _getProducts(category+constants.pathOf(categories[i]));
             global.counterLoop=0;
-            products=products.concat(prods);
+            if(prods) products=products.concat(prods);
         }
         return products;
     }
 }
 
-function _getFeatures(categoryName){
+function _getAssociatedFeatures(categoryName){
     if(typeof categoryName === 'string'){
         var category = categoryName;
         var productPath = constants.productsPath();
@@ -178,7 +197,7 @@ function _getFeatures(categoryName){
     });
     if(!features){
     if(!path) return;
-    let higherFeatures = _getFeatures(ref);
+    let higherFeatures = _getAssociatedFeatures(ref);
     if(higherFeatures){
         features = higherFeatures;
         features.category=features.category.concat(path.substring(path.lastIndexOf('/')));
@@ -232,7 +251,7 @@ function _getFeaturesObject(name,num){
     let isNotEmpty = path?.length!==0&&path!==constants.salty&&path!==constants.sweet;
     path = (num===3?(constants.rawMaterials + constants.pathOf(path?path:name)):num===1?(constants.fixedPathOf(constants.foods)):num===2?(constants.fixedPathOf(constants.drinks)):'') 
         + (path?constants.pathOf(path):'') + (isNotEmpty?'':constants.pathOf(name));
-    return name?path?_getFeatures(path):{}:{};
+    return name?path?_getAssociatedFeatures(path):{}:{};
 }
 
 function _getFeatureNames(name,num){
@@ -244,6 +263,75 @@ function _getFeatureNames(name,num){
         });
     }
     return featureNames;
+}
+
+//this method returns an array of string categories given a db Reference or its path
+function _getChildFeatures(dbReference){
+    let ref = dbReference?(typeof dbReference === 'string')?Getter.getDbRef(dbReference):dbReference:Getter.getDbRef();
+    var feature = undefined;
+    let tempCategory = ref.path.pieces_;
+    let category ='';
+    tempCategory.slice(2).forEach(piece=>{
+        category=category.concat('/'+piece);
+    });
+    ref.on('value',snap =>{
+        var BreakException ={};
+        try{
+            snap.forEach(child=>{
+                if(child.key===constants.nameOf(constants.features)){
+                    feature=child.val();
+                    feature.category=category;
+                    throw BreakException;
+                }
+            });
+        }catch(e){
+            if(e!== BreakException) throw e;
+        }
+    });
+    return feature;  
+}
+
+function _getAllChildFeatures(category){
+    global.counterLoop++;
+    if(global.counterLoop>constants.counterLoop) return;
+    let features = [];
+    var ref = Getter.getDbRef(constants.productsPath()+category);
+    let numOfSubCategories = _getDepthSubCategories(ref);
+    if(numOfSubCategories>-1){
+        let newFeature = _getChildFeatures(ref);
+        if(newFeature){
+            features.push(newFeature);
+        }
+    }
+    if(numOfSubCategories>0){
+        let categories = Getter.getChildren(ref);
+        for(let i=0;i<categories.length;i++){
+            let newFeatures = _getAllChildFeatures(category+constants.pathOf(categories[i]));
+            global.counterLoop=0;
+            if(newFeatures?.length>0) {
+                newFeatures.forEach(newFeature=>{
+                    let exist=false;
+                    features.forEach(existingFeature =>{
+                        let tempF = {...existingFeature};
+                        let tempNF = {...newFeature};
+                        delete tempF.category;
+                        delete tempNF.category;
+                        exist = JSON.stringify(tempNF)===JSON.stringify(tempF);
+                        if(exist){
+                            let c = existingFeature.category.split(',');
+                            if(c.indexOf(newFeature.category)<0){
+                                existingFeature.category = existingFeature.category+','+newFeature.category;
+                            }
+                        }
+                    });
+                    if(!exist) {
+                        features.push(newFeature);
+                    }
+                });
+            }
+        }
+    }
+    return features;
 }
 
 export default Getter;

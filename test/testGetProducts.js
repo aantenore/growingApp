@@ -37,7 +37,12 @@ class ciao extends React.Component{
         console.log(Getter.getFixedFoodCategoryFeaturesObject('diavola'));
         console.log(Getter.getFixedDrinkCategoryFeaturesObject('birra'));
         console.log(Getter.getRawMaterialCategoryFeaturesObject('bufala'));
-*/
+
+        console.log(Getter.getAllChildFeatures(constants.foods+constants.fixedSalty+constants.pathOf('hamburger')));
+        console.log(Getter.getAllChildFeatures(constants.drinks+constants.fixed));
+        console.log(Getter.getAllChildFeatures(constants.drinks+constants.fixed+constants.pathOf('birra')));
+        console.log(Getter.getAllChildFeatures('/'));
+        console.log(Getter.getAllChildFeatures(constants.foods));*/
 
         //test Setter
 /*        let rm1
@@ -99,7 +104,8 @@ class ciao extends React.Component{
         Remover.removeProduct(fd);
         Remover.removeFixedSweetDrinkCategory('birra');
         Remover.removeRawMaterialCategory('/materie_prime/a');
-*/       return(<Button onPress={()=>{this.setState({})}} title='RELOAD'></Button>);
+*/       
+return(<Button onPress={()=>{this.setState({})}} title='RELOAD'></Button>);
     };
  
     
