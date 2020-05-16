@@ -1,4 +1,5 @@
-import { Button,View, Text, FlatList,ScrollView } from 'react-native';
+import { FlatList } from 'react-native';
+
 import * as React from 'react';
 import ProductListItem from './ProductListItem'
 import firebaseClass from '../constants/database';
@@ -6,32 +7,37 @@ import { styles } from '../assets/style';
 
 
 export default class ProductList extends React.Component {
-    
+    constructor(props){
+        super(props);
+        this.state={combinedProductsArray:[],fixedProductsArray:[]};
+    }
     render(){
         console.log('combinedProductsArray: ',this.state.combinedProductsArray);
         console.log('fixedProductsArray: ',this.state.fixedProductsArray);
     return (
-        <div class="pre-scrollable" style={{  width: '100%',
-        height: '100%',}}>
-            <FlatList data={this.state.combinedProductsArray} renderItem={({item,index})=>{
-                return(
-                    <ProductListItem item={item} index={index} style= {styles.plistitem}></ProductListItem>
-                     )
-                 }}>
+        <div class="pre-scrollable"
+            style={{maxHeight: '100%'}}>
+            <FlatList 
+                data={this.state.combinedProductsArray}
+                keyExtractor={(item,index)=>index}
+                renderItem={({item,index})=>{
+                            return(
+                            <ProductListItem item={item} index={index}> </ProductListItem>
+                           );
+                        }}>
             </FlatList>
-            <FlatList data={this.state.fixedProductsArray} renderItem={({item,index})=>{
-                    return (<ProductListItem item={item} index={index} style= {styles.plistitem} 
-                        navigation={this.props.navigation}></ProductListItem>);
-                }}>
+            <FlatList 
+                data={this.state.fixedProductsArray}
+                keyExtractor={(item,index)=>index}
+                renderItem={({item,index})=>{
+                            return(
+                                <ProductListItem item={item} index={index}> </ProductListItem>
+                                 );
+                            }}>
             </FlatList>
             </div>
-    );
+     );
   };
-
-  constructor(props){
-    super(props);
-    this.state={combinedProductsArray:[],fixedProductsArray:[]};
-}
 
 componentDidMount(){
     this.findProducts();
