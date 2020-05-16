@@ -20,7 +20,7 @@ import GoToButton from './GoToButton';
       flex: 1
     },
     slide: {
-      padding: 15,
+      //padding: 15,
       height: 100,
     },
     slide1: {

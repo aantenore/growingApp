@@ -23,34 +23,34 @@ export const styles = StyleSheet.create({
     shadowRadius: 1, //IOS
     backgroundColor: color.white,
     elevation: 2, // Android
-    marginBottom: 1
+    //marginBottom: 1
 
   },
   flatlistimg: {
     width: 80,
     height: 80,
-    margin: 5
+    //margin: 5
   },
   input: {
     width: 200,
     height: 44,
-    padding: 10,
+    //padding: 10,
     borderWidth: 1,
     borderColor: 'black',
-    marginBottom: 10,
+    //marginBottom: 10,
   },
   inputext: {
     width: 200,
     height: 44,
-    padding: 10,
+    //padding: 10,
     textAlign: 'center',
     fontWeight: 'bold',
     borderWidth: 1,
     borderColor: 'black',
-    marginBottom: 10,
+    //marginBottom: 10,
   },
   inputorslider: {
-    margin: '2rem',
+    //margin: '2rem',
     //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
     backgroundColor: color.white,
     
@@ -59,22 +59,23 @@ export const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center',
     width: 200,
     height: 44,
-    padding: 10,
-    marginTop: 10,
+    //padding: 10,
+    //marginTop: 10,
     backgroundColor: color.primary,
     //borderRadius: '4.5%',
-    marginBottom: 10,
+    //marginBottom: 10,
     //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
   },
   ordinabutton: {
     flex: 1,
     flexDirection: 'row',
     width: '-webkit-fill-available',
-    padding: 10,
-    marginTop: 10,
+    //padding: 10,
+    //marginTop: 10,
     backgroundColor:  color.whitedark,
     //borderRadius: '4.5%', 
-    marginBottom: 10, color: 'yellow',
+    //marginBottom: 10, 
+    color: 'yellow',
     //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
   }, 
   text: {
@@ -90,7 +91,7 @@ export const styles = StyleSheet.create({
   listitemtext: {
     color: 'black',
     height: 18,
-    paddingLeft: '0.5rem'
+    //paddingLeft: '0.5rem'
   },
   h2: {
     color: 'black',
@@ -114,18 +115,18 @@ export const styles = StyleSheet.create({
     backgroundColor: color.secondary
   },
   item: {
-    padding: 10,
+    //padding: 10,
     fontSize: 18,
-    padding: '1rem'
+    //padding: '1rem'
   },
   plistitem: {
-    padding: 10,
+    //padding: 10,
     fontSize: 18
   },
   card: {
     width: '90%',
     height: '100%',
-    marginTop: '1rem',
+    //marginTop: '1rem',
     //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
   },
   title: {

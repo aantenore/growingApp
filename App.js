@@ -100,7 +100,6 @@ const commonOptions =
     elevation: 0,
     shadowOpacity: 0
   },
-  headerRightContainerStyle:{ paddingRight: '3rem'},
   headerRight: () => (<Cart></Cart>)
  
   // transitionSpec: {

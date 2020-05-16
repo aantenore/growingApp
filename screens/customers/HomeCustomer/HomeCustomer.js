@@ -32,7 +32,7 @@ export default function HomeCustomer({navigation}) {
   
       <SwipeableViews>
          <View id='discoverymenu' style = {styles.container}>
-         <View style={{  margin: '0.5rem',
+         <View style={{  //margin: '0.5rem',
                             //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
                             backgroundColor: 'white',
                             flex:1,
@@ -45,15 +45,15 @@ export default function HomeCustomer({navigation}) {
               <Image style={{resizeMode: 'contain',flex:1}} source= {coichemenu} alt="Discovery menu"/>
               </View>
               <View style={{flex: 4,}}>
-                <Text style={{padding: '0.5rem'}}> {lorem} </Text>
+                <Text> {lorem} </Text>
               </View>
-              <View style={{flex: 1, flexDirection:'row', justifyContent:'center',marginBottom: '1rem'}}>
+              <View style={{flex: 1, flexDirection:'row', justifyContent:'center'}}>
               <GoToButton screen={dMenu} navigation={navigation} />
               </View>
             </View> 
          </View>
          <View id='staticmenu' style = {styles.container}>
-            <View style={{  margin: '0.5rem',
+            <View style={{  //margin: '0.5rem',
                             //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
                             backgroundColor: 'white',
                             flex:1,
@@ -66,15 +66,15 @@ export default function HomeCustomer({navigation}) {
               <Image  style={{resizeMode: 'contain',flex:1}} source = {menu} alt="Static menu"/>
               </View>
               <View style={{flex:4}}>
-                <Text style={{padding: '0.5rem'}}> {lorem} </Text>
+                <Text> {lorem} </Text>
               </View>
-              <View style={{flex: 1, flexDirection:'row', justifyContent:'center',marginBottom: '1rem'}}>
+              <View style={{flex: 1, flexDirection:'row', justifyContent:'center'}}>
               <GoToButton screen={sMenu} navigation={navigation} />
               </View>
             </View> 
          </View>
          <View id='todayoffers' style = {styles.container}>
-         <View style={{  margin: '0.5rem',
+         <View style={{  //margin: '0.5rem',
                             //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
                             backgroundColor: 'white',
                             flex:1,
@@ -86,16 +86,16 @@ export default function HomeCustomer({navigation}) {
               <View style={{flex:6,flexDirection:'row',justifyContent:'center'}}>
               <Image  style={{resizeMode: 'contain',flex:0.8}} source = {offers} alt="Today's offers"/>
               </View>
-               <View style={{flex: 4, flexDirection:'row', justifyContent:'center',marginBottom: '1rem'}}>
-                <Text style={{padding: '0.5rem'}}> {lorem} </Text>
+               <View style={{flex: 4, flexDirection:'row', justifyContent:'center'}}>
+                <Text> {lorem} </Text>
               </View>
-              <View style={{flex: 1, flexDirection:'row', justifyContent:'center',marginBottom: '1rem'}}>
+              <View style={{flex: 1, flexDirection:'row', justifyContent:'center'}}>
               <GoToButton screen={tOffer} navigation={navigation} />
               </View>
             </View> 
          </View>
          <View id='ourproducts' style = {styles.container}>
-         <View style={{  margin: '0.5rem',
+         <View style={{  //margin: '0.5rem',
                             //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
                             backgroundColor: 'white',
                             flex:1,
@@ -108,9 +108,9 @@ export default function HomeCustomer({navigation}) {
               <Image  style={{resizeMode: 'contain',flex:0.7}} source = {products} alt="Today's offers"/>
               </View>
               <View style={{flex:4,}}>
-                <Text style={{padding: '0.5rem'}}> {lorem} </Text>
+                <Text> {lorem} </Text>
               </View>
-              <View style={{flex: 1, flexDirection:'row', justifyContent:'center',marginBottom: '1rem'}}>
+              <View style={{flex: 1, flexDirection:'row', justifyContent:'center'}}>
               <GoToButton screen={ourProduct} navigation={navigation} />
               </View>
             </View> 
