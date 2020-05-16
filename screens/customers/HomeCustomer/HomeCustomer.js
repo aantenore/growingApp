@@ -10,6 +10,7 @@ import Getter from '../../../service/Getter';
 
 import GoToButton from '../../../components/GoToButton';
 import SwipeableViews from 'react-swipeable-views-native';
+//import Swiper from 'react-native-swiper'
 
 
 
@@ -33,7 +34,7 @@ export default function HomeCustomer({navigation}) {
       <SwipeableViews>
          <View id='discoverymenu' style = {styles.container}>
          <View style={{  //margin: '0.5rem',
-                            //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+                            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
                             backgroundColor: 'white',
                             flex:1,
                             flexDirection:'column',
@@ -41,20 +42,20 @@ export default function HomeCustomer({navigation}) {
               {/* <div class="card-header">
                 <h5 class="card-title" style = {{ color: color.primary}}> {dMenu} </h5>
               </div> */}
-              <View style={{flex:6}}>
+              <View style ={{flex:2}}>
               <Image style={{resizeMode: 'contain',flex:1}} source= {coichemenu} alt="Discovery menu"/>
               </View>
-              <View style={{flex: 4,}}>
-                <Text> {lorem} </Text>
+              <View style ={{flex:1}}>
+              <Text style={{flex: 1,}}> {lorem} </Text>
               </View>
               <View style={{flex: 1, flexDirection:'row', justifyContent:'center'}}>
-              <GoToButton screen={dMenu} navigation={navigation} />
+              <GoToButton style={{flex: 1,}} screen={dMenu} navigation={navigation} />
               </View>
             </View> 
          </View>
          <View id='staticmenu' style = {styles.container}>
             <View style={{  //margin: '0.5rem',
-                            //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+                            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
                             backgroundColor: 'white',
                             flex:1,
                             flexDirection:'column',
@@ -62,20 +63,20 @@ export default function HomeCustomer({navigation}) {
               {/* <div class="card-header">
                 <h5 class="card-title" style = {{ color: color.primary}}> {dMenu} </h5>
               </div> */}
-              <View style={{flex:6}}>
+              <View style ={{flex:1}}>
               <Image  style={{resizeMode: 'contain',flex:1}} source = {menu} alt="Static menu"/>
               </View>
-              <View style={{flex:4}}>
-                <Text> {lorem} </Text>
+              <View style ={{flex:1}}>
+              <Text style={{flex:1}}> {lorem} </Text>
               </View>
               <View style={{flex: 1, flexDirection:'row', justifyContent:'center'}}>
-              <GoToButton screen={sMenu} navigation={navigation} />
+              <GoToButton style={{flex: 1,}} screen={sMenu} navigation={navigation} />
               </View>
             </View> 
          </View>
          <View id='todayoffers' style = {styles.container}>
          <View style={{  //margin: '0.5rem',
-                            //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+                            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
                             backgroundColor: 'white',
                             flex:1,
                             flexDirection:'column',
@@ -83,20 +84,20 @@ export default function HomeCustomer({navigation}) {
               {/* <div class="card-header">
                 <h5 class="card-title" style = {{ color: color.primary}}> {dMenu} </h5>
               </div> */}
-              <View style={{flex:6,flexDirection:'row',justifyContent:'center'}}>
-              <Image  style={{resizeMode: 'contain',flex:0.8}} source = {offers} alt="Today's offers"/>
+              <View style ={{flex:1}}>
+              <Image  style={{resizeMode: 'contain',flex:1}} source = {offers} alt="Today's offers"/>
               </View>
-               <View style={{flex: 4, flexDirection:'row', justifyContent:'center'}}>
-                <Text> {lorem} </Text>
+              <View style ={{flex:1}}>
+              <Text style={{flex: 1}}> {lorem} </Text>
               </View>
               <View style={{flex: 1, flexDirection:'row', justifyContent:'center'}}>
-              <GoToButton screen={tOffer} navigation={navigation} />
+              <GoToButton style={{flex: 1,}}screen={tOffer} navigation={navigation} />
               </View>
             </View> 
          </View>
          <View id='ourproducts' style = {styles.container}>
          <View style={{  //margin: '0.5rem',
-                            //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+                            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
                             backgroundColor: 'white',
                             flex:1,
                             flexDirection:'column',
@@ -104,14 +105,14 @@ export default function HomeCustomer({navigation}) {
               {/* <div class="card-header">
                 <h5 class="card-title" style = {{ color: color.primary}}> {dMenu} </h5>
               </div> */}
-              <View style={{flex:6,flexDirection:'row',justifyContent:'center'}}>
-              <Image  style={{resizeMode: 'contain',flex:0.7}} source = {products} alt="Today's offers"/>
+              <View style ={{flex:1}}>
+              <Image  style={{resizeMode: 'contain',flex:1}} source = {products} alt="Today's offers"/>
               </View>
-              <View style={{flex:4,}}>
-                <Text> {lorem} </Text>
+              <View style ={{flex:1}}>
+              <Text style={{flex:1,}}> {lorem} </Text>
               </View>
               <View style={{flex: 1, flexDirection:'row', justifyContent:'center'}}>
-              <GoToButton screen={ourProduct} navigation={navigation} />
+              <GoToButton style={{flex: 1,}} screen={ourProduct} navigation={navigation} />
               </View>
             </View> 
          </View>
