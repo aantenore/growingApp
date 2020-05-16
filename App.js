@@ -94,6 +94,7 @@ const commonOptions =
     //fontWeight: '200',
     display: 'none'
   },
+  headerMode: 'screen',
   headerStyle :{ 
     backgroundColor: color.secondary,
     elevation: 0,
