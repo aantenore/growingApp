@@ -87,12 +87,14 @@ const loginOptions = {
   headerShown: false,
 }
 const commonOptions =
-{ headerTintColor: color.white,
+{ 
+  
+  headerTintColor: color.white,
   headerTitleStyle: {
     //fontWeight: '200',
     display: 'none'
   },
-  headerMode: screen,
+  headerMode: 'screen',
   headerStyle :{ 
     backgroundColor: color.secondary,
     elevation: 0,
