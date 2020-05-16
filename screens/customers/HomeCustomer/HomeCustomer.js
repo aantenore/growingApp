@@ -42,7 +42,7 @@ export default function HomeCustomer({navigation}) {
                 <h5 class="card-title" style = {{ color: color.primary}}> {dMenu} </h5>
               </div> */}
               <View style={{flex:6}}>
-              <Image style={{width: '80%', marginTop: '1rem', flex:1, resizeMode:'contain',}} source= {coichemenu} alt="Discovery menu"/>
+              <Image style={{resizeMode: 'contain',flex:1}} source= {coichemenu} alt="Discovery menu"/>
               </View>
               <View style={{flex: 4,}}>
                 <Text style={{padding: '0.5rem'}}> {lorem} </Text>

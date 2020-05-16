@@ -14,32 +14,27 @@ export default class DiscoveryList extends React.Component {
     render() {
         console.log(this.state.categoriesArray);
         return (
-
-            <div class="pre-scrollable"
-                style={{ maxHeight: '100%' }}>
                 <FlatList
                     data={this.state.categoriesArray}
                     keyExtractor={(item, index) => index}
                     renderItem={({ item, index }) => {
                         return (
-                            <TouchableOpacity style={styles.flatlistbutton}>
+                            <TouchableOpacity style={styles.flatlistbutton} >
                                 <Image style={styles.flatlistimg} source={img} />
-                                <InputOrSlider item={item} index={index} navigation={this.props.navigation}></InputOrSlider>
-                                
+                                {/* <InputOrSlider item={item} index={index} navigation={this.props.navigation}></InputOrSlider> */}
+
                             </TouchableOpacity>
                         );
                     }}>
                 </FlatList>
-
+   );
                 { /*<FlatList data={this.state.categoriesArray}
                 renderItem={({item,index})=>{
                     return(
                             <InputOrSlider item={item} index={index} navigation={this.props.navigation}></InputOrSlider>
                     )
                 }}></FlatList>*/}
-
-            </div>
-        );
+     
     };
 
     constructor(props) {
@@ -67,7 +62,7 @@ export default class DiscoveryList extends React.Component {
             this.setState({ categoriesArray });
         });
     }
-
+    
 }
 
 
