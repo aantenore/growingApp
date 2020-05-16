@@ -3,6 +3,7 @@ import * as React from 'react';
 import Cart, { CANIADD } from './Cart';
 import { styles, color } from '../assets/style';
 import img from './../assets/img/cibo.jpg';
+import Product from '../Utils/Product'
 
 export default class ProductListItem extends React.Component {
 
@@ -26,8 +27,8 @@ export default class ProductListItem extends React.Component {
       <TouchableOpacity style={styles.flatlistbutton}>
         <Image style={styles.flatlistimg} source={img} />
         <View style={{ flex: 1, justifyContent: 'center' }}>
-          <Text style={styles.h2}> {this.props.item.key}</Text>
-          <Text style={{ fontSize: 15, marginBottom: 15 }}> {this.props.item.component_1} - {this.props.item.component_2}</Text>
+          <Text style={styles.h2}> {Product.getName(this.props.item)}</Text>
+          <Text style={{ fontSize: 15, marginBottom: 15 }}> {Product.getDescription(this.props.item)} - {Product.getCategory(this.props.item)}</Text>
         </View>
       </TouchableOpacity>
     );

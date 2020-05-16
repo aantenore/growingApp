@@ -1,24 +1,27 @@
-import { FlatList } from 'react-native';
+import { FlatList, Button } from 'react-native';
 
 import * as React from 'react';
 import ProductListItem from './ProductListItem'
 import firebaseClass from '../constants/database';
 import { styles } from '../assets/style';
+import { getCameraTexture } from 'expo/build/AR';
+import Getter from '../service/Getter'
 
 
 export default class ProductList extends React.Component {
+
     constructor(props){
         super(props);
-        this.state={combinedProductsArray:[],fixedProductsArray:[]};
+        this.state={foods:[],drinks:[]};
     }
     render(){
-        console.log('combinedProductsArray: ',this.state.combinedProductsArray);
-        console.log('fixedProductsArray: ',this.state.fixedProductsArray);
+        console.log('foods: ',this.state.foods);
+        console.log('drinks: ',this.state.drinks);
     return (
         <div class="pre-scrollable"
             style={{maxHeight: '100%'}}>
             <FlatList 
-                data={this.state.combinedProductsArray}
+                data={this.state.foods}
                 keyExtractor={(item,index)=>index}
                 renderItem={({item,index})=>{
                             return(
@@ -27,7 +30,7 @@ export default class ProductList extends React.Component {
                         }}>
             </FlatList>
             <FlatList 
-                data={this.state.fixedProductsArray}
+                data={this.state.drinks}
                 keyExtractor={(item,index)=>index}
                 renderItem={({item,index})=>{
                             return(
@@ -39,11 +42,19 @@ export default class ProductList extends React.Component {
      );
   };
 
-componentDidMount(){
-    this.findProducts();
+  async componentDidMount(){
+    
+    var newFoods = Getter.getFoods();
+    var newDrinks = Getter.getDrinks();
+    this.setState({
+        drinks: newDrinks,
+        foods: newFoods,
+    });
+
+    }
 }
 
-findProducts(){
+/*findProducts(){
     let ref = firebaseClass.db().ref('/'+global.user+'/products');
     ref.child('combined').once('value').then(products=>{
         let combinedProductsArray=[]
@@ -69,12 +80,7 @@ findProducts(){
         });
         this.setState({fixedProductsArray});
     });
-}
 
-}
-
-
-/*
 .on('value',snap=>{
             this.setState({combinedProducts:snap.child('combined'),fixedProducts:snap.child('fixed')});
         });

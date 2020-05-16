@@ -6,13 +6,16 @@ import menu from '../../../assets/img/menu.png';
 import coichemenu from '../../../assets/img/coichemenu.png';
 import offers from '../../../assets/img/offers.png';
 import products from '../../../assets/img/products.png';
+import Getter from '../../../service/Getter';
 
 import GoToButton from '../../../components/GoToButton';
 import SwipeableViews from 'react-swipeable-views-native';
 
 
+
 export default function HomeCustomer({navigation}) {
   //console.log("user: "+Global.user);
+  Getter.getDbRef();
   var dMenu = 'DiscoveryMenu';
   var sMenu = 'StaticMenu';
   var tOffer = 'TodayOffers';
