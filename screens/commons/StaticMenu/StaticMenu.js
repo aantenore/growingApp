@@ -1,4 +1,4 @@
-
+import { View, FlatList, Button } from 'react-native';
 import * as React from 'react';
 import { styles,color } from '../../../assets/style';
 import ProductList from '../../../components/ProductList';
@@ -7,12 +7,12 @@ import ProductList from '../../../components/ProductList';
 
 export default function StaticMenu({ navigation}) {
   return (
-      <div class='card' style={{ width: '100%',
+      <View style={{ width: '100%',
                             height: '100%',
                             backgroundColor: color.secondary,
                             boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',}}>
         <StaticMenuComponent navigation={navigation}></StaticMenuComponent>
-      </div>
+      </View>
 
   );
 }
@@ -27,9 +27,9 @@ class StaticMenuComponent extends React.Component{
 
   render(){
     return(
-      <div style={{ width: '100%',height: '100%'}}>
+      <View style={{ flex:1}}>
         <ProductList navigation={this.props.navigation} ></ProductList>
-      </div>
+      </View>
     );
   }
 }

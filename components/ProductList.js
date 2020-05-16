@@ -1,4 +1,4 @@
-import { FlatList, Button } from 'react-native';
+import { View, FlatList, Button } from 'react-native';
 
 import * as React from 'react';
 import ProductListItem from './ProductListItem'
@@ -12,33 +12,24 @@ export default class ProductList extends React.Component {
 
     constructor(props){
         super(props);
-        this.state={foods:[],drinks:[]};
+        this.state={foods:[{}],drinks:[{}]};
     }
     render(){
         console.log('foods: ',this.state.foods);
         console.log('drinks: ',this.state.drinks);
-    return (
-        <div class="pre-scrollable"
-            style={{maxHeight: '100%'}}>
+    return(
+        <View style={{flex:1}}>
             <FlatList 
-                data={this.state.foods}
+                data={this.state.foods.concat(this.state.drinks)}
                 keyExtractor={(item,index)=>index}
                 renderItem={({item,index})=>{
                             return(
                             <ProductListItem item={item} index={index}> </ProductListItem>
                            );
-                        }}>
+                        }}
+            >
             </FlatList>
-            <FlatList 
-                data={this.state.drinks}
-                keyExtractor={(item,index)=>index}
-                renderItem={({item,index})=>{
-                            return(
-                                <ProductListItem item={item} index={index}> </ProductListItem>
-                                 );
-                            }}>
-            </FlatList>
-            </div>
+            </View>
      );
   };
 

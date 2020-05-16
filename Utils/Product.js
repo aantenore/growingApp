@@ -41,8 +41,12 @@ export default class Product{
     }
 
     //this method return the category string of a product object
-     static getCategory(product){
+    static getCategory(product){
         return product?product['category']?product['category']:undefined:undefined;
+    }
+
+    static getPrice(product){
+        return product?product['price']?product['price']:undefined:undefined;
     }
 
     //this method return the components' string array of a combined product object

@@ -14,7 +14,6 @@ import Cart from './components/Cart';
 import testGetProducts from './test/testGetProducts';
 import {storeShopName,retrieveShopName} from './constants/userPreferences'
 
-import './node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Animated } from 'react-native';
 import { color } from './assets/style';
 import constants from './constants/constants';

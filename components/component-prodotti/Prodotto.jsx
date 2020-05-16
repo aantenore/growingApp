@@ -1,19 +1,18 @@
 import * as React from 'react';
-import './style.css';
+import {View,Image,Text} from 'react-native';
 const Prodotto = props => {
     return(
-        <div className="card text-center shadow">
-            <div className="overflow">
-                <img src={props.imgsrc} alt="Cibo"className="card-img-top"/>
-            </div>
-            <div className="card-body text-dark">
-                <h4 className="card-title">Titolo</h4>
-                <p className="card-text text-secondary">
+        <View>
+            <View>
+                <Image source={props.imgsrc} alt="Cibo" className="card-img-top"/>
+            </View>
+            <View>
+                <Text>Titolo</Text>
+                <Text>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto quam eos, quo cumque sint dolores
-                </p>
-                <a href="#" className="btn btn-outline-success">Vai </a>
-            </div>
-        </div>
+                </Text>
+            </View>
+        </View>
     );
 }
 export default Prodotto;

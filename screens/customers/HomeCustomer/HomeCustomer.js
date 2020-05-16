@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View,Text,Image } from 'react-native';
 import { styles, color } from '../../../assets/style';
 import menu from '../../../assets/img/menu.png';
 import coichemenu from '../../../assets/img/coichemenu.png';
@@ -32,72 +32,88 @@ export default function HomeCustomer({navigation}) {
   
       <SwipeableViews>
          <View id='discoverymenu' style = {styles.container}>
-            <div class="card" style={{ width: '90%',
-                            height: '100%',
-                            margin: '0.5rem',
-                            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',}}>
+         <View style={{  margin: '0.5rem',
+                            //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+                            backgroundColor: 'white',
+                            flex:1,
+                            flexDirection:'column',
+                            justifyContent:'space-between'}}>
               {/* <div class="card-header">
                 <h5 class="card-title" style = {{ color: color.primary}}> {dMenu} </h5>
               </div> */}
-              <img class="card-img-top img-responsive ml-auto mr-auto" style={{width: '80%', marginTop: '1rem'}} src= {coichemenu} alt="Discovery menu"/>
-              <div class="card-body mr-auto">
-                <h5 style={{padding: '0.5rem'}}> {lorem} </h5>
-              </div>
-              <div class="mt-auto ml-auto mr-auto">
-              <GoToButton class="align-self-end" screen={dMenu} navigation={navigation} />
-              </div>
-            </div> 
+              <View style={{flex:6}}>
+              <Image style={{width: '80%', marginTop: '1rem', flex:1, resizeMode:'contain',}} source= {coichemenu} alt="Discovery menu"/>
+              </View>
+              <View style={{flex: 4,}}>
+                <Text style={{padding: '0.5rem'}}> {lorem} </Text>
+              </View>
+              <View style={{flex: 1, flexDirection:'row', justifyContent:'center',marginBottom: '1rem'}}>
+              <GoToButton screen={dMenu} navigation={navigation} />
+              </View>
+            </View> 
          </View>
          <View id='staticmenu' style = {styles.container}>
-            <div class="card" style={{ width: '90%',
-                            height: '100%',
-                            margin: '0.5rem',
-                            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',}}>
+            <View style={{  margin: '0.5rem',
+                            //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+                            backgroundColor: 'white',
+                            flex:1,
+                            flexDirection:'column',
+                            justifyContent:'space-between'}}>
               {/* <div class="card-header">
                 <h5 class="card-title" style = {{ color: color.primary}}> {dMenu} </h5>
               </div> */}
-              <img class="card-img-top img-responsive ml-auto mr-auto" style={{width: '80%', marginTop: '1rem'}} src= {menu} alt="Static menu"/>
-              <div class="card-body mr-auto">
-                <h5 style={{padding: '0.5rem'}}> {lorem} </h5>
-              </div>
-              <div class="mt-auto ml-auto mr-auto">
-              <GoToButton class="align-self-end" screen={sMenu} navigation={navigation} />
-              </div>
-            </div> 
+              <View style={{flex:6}}>
+              <Image  style={{resizeMode: 'contain',flex:1}} source = {menu} alt="Static menu"/>
+              </View>
+              <View style={{flex:4}}>
+                <Text style={{padding: '0.5rem'}}> {lorem} </Text>
+              </View>
+              <View style={{flex: 1, flexDirection:'row', justifyContent:'center',marginBottom: '1rem'}}>
+              <GoToButton screen={sMenu} navigation={navigation} />
+              </View>
+            </View> 
          </View>
          <View id='todayoffers' style = {styles.container}>
-            <div class="card" style={{ width: '90%',
-                            height: '100%',
-                            margin: '0.5rem',
-                            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',}}>
+         <View style={{  margin: '0.5rem',
+                            //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+                            backgroundColor: 'white',
+                            flex:1,
+                            flexDirection:'column',
+                            justifyContent:'space-between'}}>
               {/* <div class="card-header">
                 <h5 class="card-title" style = {{ color: color.primary}}> {dMenu} </h5>
               </div> */}
-              <img class="card-img-top img-responsive ml-auto mr-auto" style={{width: '80%', marginTop: '1rem'}} src= {offers} alt="Today's offers"/>
-              <div class="card-body mr-auto">
-                <h5 style={{padding: '0.5rem'}}> {lorem} </h5>
-              </div>
-              <div class="mt-auto ml-auto mr-auto">
-              <GoToButton class="align-self-end" screen={tOffer} navigation={navigation} />
-              </div>
-            </div> 
+              <View style={{flex:6,flexDirection:'row',justifyContent:'center'}}>
+              <Image  style={{resizeMode: 'contain',flex:0.8}} source = {offers} alt="Today's offers"/>
+              </View>
+               <View style={{flex: 4, flexDirection:'row', justifyContent:'center',marginBottom: '1rem'}}>
+                <Text style={{padding: '0.5rem'}}> {lorem} </Text>
+              </View>
+              <View style={{flex: 1, flexDirection:'row', justifyContent:'center',marginBottom: '1rem'}}>
+              <GoToButton screen={tOffer} navigation={navigation} />
+              </View>
+            </View> 
          </View>
          <View id='ourproducts' style = {styles.container}>
-            <div class="card" style={{ width: '90%',
-                            height: '100%',
-                            margin: '0.5rem',
-                            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',}}>
+         <View style={{  margin: '0.5rem',
+                            //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+                            backgroundColor: 'white',
+                            flex:1,
+                            flexDirection:'column',
+                            justifyContent:'space-between'}}>
               {/* <div class="card-header">
                 <h5 class="card-title" style = {{ color: color.primary}}> {dMenu} </h5>
               </div> */}
-              <img class="card-img-top img-responsive ml-auto mr-auto" style={{width: '80%', marginTop: '1rem'}} src= {products} alt="Our products"/>
-              <div class="card-body mr-auto">
-                <h5 style={{padding: '0.5rem'}}> {lorem} </h5>
-              </div>
-              <div class="mt-auto ml-auto mr-auto">
-              <GoToButton class="align-self-end" screen={ourProduct} navigation={navigation} />
-              </div>
-            </div> 
+              <View style={{flex:6,flexDirection:'row',justifyContent:'center'}}>
+              <Image  style={{resizeMode: 'contain',flex:0.7}} source = {products} alt="Today's offers"/>
+              </View>
+              <View style={{flex:4,}}>
+                <Text style={{padding: '0.5rem'}}> {lorem} </Text>
+              </View>
+              <View style={{flex: 1, flexDirection:'row', justifyContent:'center',marginBottom: '1rem'}}>
+              <GoToButton screen={ourProduct} navigation={navigation} />
+              </View>
+            </View> 
          </View>
       </SwipeableViews>
     );

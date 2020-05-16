@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList, StyleSheet,View} from 'react-native';
 import {List, ListItem } from 'react-native-elements';
 
 import Prodotto from './Prodotto';
-import './style.css';
 import cibo from '../../assets/img/cibo.jpg'; 
 import drink from '../../assets/img/cocktail.png'; 
 
@@ -106,19 +105,17 @@ import drink from '../../assets/img/cocktail.png';
 class Prodotti extends Component {
     render (){
         return(
-            <div className="container-fluid d-flex justify-content-center">
-                <div className="row">
-                    <div className="col-md-4 mr-1">
+                <View style ={{flex:1,flexDirection:'row'}}>
+                    <View style ={{flex:1}}>
                         <Prodotto imgsrc={cibo}/>
-                    </div>
-                    <div className="col-md-4 mr-1">
+                    </View>
+                    <View style ={{flex:1}}>
                         <Prodotto imgsrc={drink}/>
-                    </div>
-                    <div className="col-md-4 mr-1">
+                    </View>
+                    <View style ={{flex:1}}>
                         <Prodotto imgsrc={cibo}/>
-                    </div>
-                </div>
-            </div>
+                    </View>
+                </View>
 
         );
     }

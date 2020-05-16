@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
   },
   inputorslider: {
     margin: '2rem',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+    //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
     backgroundColor: color.white,
     
   },
@@ -62,9 +62,9 @@ export const styles = StyleSheet.create({
     padding: 10,
     marginTop: 10,
     backgroundColor: color.primary,
-    borderRadius: '4.5%',
+    //borderRadius: '4.5%',
     marginBottom: 10,
-    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+    //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
   },
   ordinabutton: {
     flex: 1,
@@ -73,9 +73,9 @@ export const styles = StyleSheet.create({
     padding: 10,
     marginTop: 10,
     backgroundColor:  color.whitedark,
-    borderRadius: '4.5%', 
+    //borderRadius: '4.5%', 
     marginBottom: 10, color: 'yellow',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+    //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
   }, 
   text: {
     color: color.white,
@@ -126,7 +126,7 @@ export const styles = StyleSheet.create({
     width: '90%',
     height: '100%',
     marginTop: '1rem',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
+    //boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
   },
   title: {
     color: color.primary
